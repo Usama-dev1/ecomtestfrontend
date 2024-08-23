@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ShopCard from "./Shopcard";
+import Shoppingcard from "./Shoppingcard";
 
 const dummyProducts = [
   {
@@ -94,7 +94,7 @@ const ProductArea = () => {
       </h2>
       <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 items-center justify-center">
         {itemsToShow.map((product) => (
-          <ShopCard
+          <Shoppingcard
             key={product.id}
             name={product.name}
             price={product.price}
