@@ -1,17 +1,22 @@
-import React from 'react'
-import Navbar from "./components/Navbar"
-import ProductArea from './components/ProductArea'
-import Banner from './components/Banner'
-import Slider from './components/Slider'
+import React from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import Mainlayout from "./layouts/Mainlayout";
 const App = () => {
-  return (
-    <>
-      <Navbar />
-      <Slider />
-      <Banner />
-      <ProductArea />
-    </>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Mainlayout />}>
+        <Route index element={<Homepage/>} />
+      </Route>
+    )
   );
-}
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;

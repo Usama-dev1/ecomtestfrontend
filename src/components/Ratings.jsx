@@ -6,7 +6,7 @@ const Rating = ( ) => {
   return (
     <div className="relative flex">
       {Array.from({ length: 5 }, (_, index) => (
-        <FaStar
+        <FaStar key={index}
         />
       ))}
     </div>

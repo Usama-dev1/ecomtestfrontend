@@ -6,8 +6,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const handleMenuToggle = () => {
     setOpen((prevState) => !prevState);
-  };
-
+  }
   return (
     <nav className="bg-white w-full shadow-md px-4 py-2 border-t-2 border-gray-100">
       <div className="container mx-auto">

@@ -102,7 +102,7 @@ const ProductArea = () => {
           />
         ))}
       </div>
-      <div className="flex justify-center items-center mt-4 space-x-2">
+      <div className="flex justify-center flex-wrap items-center mt-4 space-x-2">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -110,7 +110,7 @@ const ProductArea = () => {
           aria-label="Previous Page">
           Previous
         </button>
-        <span className="text-center text-md bg-white py-2 px-4 rounded-sm border border-black">
+        <span className="text-center text-md bg-white py-2 px-2 rounded-sm border border-black">
           Page {currentPage} of {totalPages}
         </span>
         <button
