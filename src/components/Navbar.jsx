@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes, FaSearch, FaShoppingCart,  } from "react-icons/fa";
 import { IoPersonAdd } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -17,7 +18,10 @@ const Navbar = () => {
               className="md:hidden text-gray-600 z-20">
               {open ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
-            <div className="text-2xl text-gray-500 font-extrabold">Shoplogo</div>
+            <div className="text-2xl text-gray-500 font-extrabold">
+              {" "}
+              <Link to='/'>Shoplogo </Link>
+            </div>
             <button className="md:hidden text-gray-600 hover:text-gray-800 flex items-center space-x-4">
               <FaShoppingCart size={24} />
               <IoPersonAdd size={24} />
@@ -27,13 +31,25 @@ const Navbar = () => {
           <div
             className={`w-full md:flex md:w-auto ${open ? "block" : "hidden"}`}>
             <ul className="flex flex-col font-mono text-lg items-center text-gray-600 md:flex-row md:items-start md:space-x-4 mt-4 md:mt-0">
-              {["Home", "Shop", "Contact Us", "About Us"].map((item) => (
-                <li key={item} className="my-2 md:my-0 ">
-                  <a href="#" className="block text-gray-700 hover:underline">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="my-2 md:my-0 ">
+                <Link to="/" className="block text-gray-700 hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li className="my-2 md:my-0 ">
+                <Link
+                  to="/aboutus"
+                  className="block text-gray-700 hover:underline">
+                  About Us
+                </Link>
+              </li>
+              <li className="my-2 md:my-0 ">
+                <Link
+                  to="/contactus"
+                  className="block text-gray-700 hover:underline">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
