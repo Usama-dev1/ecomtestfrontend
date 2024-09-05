@@ -1,20 +1,25 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { dummyProducts } from '../products/products'
-import Singlecard from './Singlecard'
+import { useParams } from "react-router-dom";
+import Singlecard from "./Singlecard";
+import { useGetProductByIdQuery } from "../slices/productSlice";
+import Spinner from "./Spinner";
+import Error from "./Error";
 const Singleproduct = () => {
-const {id}=useParams()
-const product = dummyProducts.filter((p) => p.id === parseInt(id));
-console.log(product)
-    return (
-      <>
-        {product.map((p) => (
-          <div key={p.id}>
-            <Singlecard product={p}/>
-          </div>
-        ))}
-      </>
-    );
-}
+  const { id } = useParams();
+const{data:product,isLoading,error}=useGetProductByIdQuery(id)
+ 
+  return (
+    <>
+      {error ? (
+        <Error>{error.message || error.error}</Error>
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <Singlecard product={product} />
+        </div>
+      )}
+    </>
+  );
+};
 
-export default Singleproduct
+export default Singleproduct;

@@ -1,40 +1,37 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import the CSS for carousel
+import { useGetProductsQuery } from "../slices/productSlice";
+import Spinner from "./Spinner";
 
-export default () => (
-  <div className="w-full flex justify-center">
-    <Carousel
-      autoPlay
-      infiniteLoop
-      showArrows={true}
-      showThumbs={false}
-      showStatus={false}
-      className="w-[60rem] m-2 ">
-      <div>
-        <img
-          alt="Vintage Leather Wallet"
-          src="https://via.placeholder.com/1200x600?text=Leather+belt"
-          className="w-full"
-        />
-        <p className="legend">Legend 1</p>
-      </div>
-      <div>
-        <img
-          alt="Cat Image 1"
-          src="https://via.placeholder.com/1200x600?text=Vintage+Leather+Wallet"
-          className="w-full"
-        />
-        <p className="legend">Legend 2</p>
-      </div>
-      <div>
-        <img
-          alt="Cat Image 2"
-          src="https://via.placeholder.com/1200x600?text=Leather+Shoes"
-          className="w-full"
-        />
-        <p className="legend">Legend 3</p>
-      </div>
-    </Carousel>
-  </div>
-);
+const ProductCarousel = () => {
+  const { data: products, isLoading, error } = useGetProductsQuery();
+
+
+  return (
+    <div className="w-full flex justify-center">
+      {isLoading&&<Spinner/>}
+      {error&&error.data.message}
+      <Carousel
+        autoPlay
+        infiniteLoop
+        showArrows={true}
+        showThumbs={false}
+        showStatus={false}
+        className="w-[40rem] m-2">
+        {products.map((product) => (
+          <div key={product.id}>
+            <img
+              alt={product.name || "Product image"}
+              src={product.image || "/default-image.jpg"} // Provide a default image if not available
+              className="w-full"
+            />
+            <p className="legend">{product.name}</p>
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  );
+};
+
+export default ProductCarousel;
