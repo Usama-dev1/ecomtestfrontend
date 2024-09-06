@@ -3,7 +3,7 @@ export const apiSlice = createApi({
   reducerPath: "apiSlice",
   tagTypes: ["product", "order", "user"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/",
+    baseUrl: "https://ecomtestrepoapi.vercel.app/api/",
     credentials: "include",
   }),
   endpoints: (builder) => ({}),
