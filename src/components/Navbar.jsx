@@ -139,11 +139,28 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </li>
-              <button
-                onClick={handleLogout}
-                className="bg-gray-500 text-sm px-4 py-1 sm:hidden text-white rounded-xl">
-                Logout
-              </button>
+              <div className="sm:flex flex-row justify-end gap-1 md:justify-end  md:gap-2">
+                {!userInfo ? (
+                  <>
+                    <Link to="/login">
+                      <button className="bg-gray-500 text-sm px-4 py-1 text-white rounded-xl">
+                        Login
+                      </button>
+                    </Link>
+                    <Link to="/register">
+                      <button className="bg-gray-500 text-sm px-2 py-1 text-white rounded-xl">
+                        Register
+                      </button>
+                    </Link>
+                  </>
+                ) : (
+                  <button
+                    onClick={handleLogout}
+                    className="bg-gray-500  text-sm px-4 py-1 text-white rounded-xl">
+                    Logout
+                  </button>
+                )}
+              </div>
             </ul>
           </div>
 
@@ -222,28 +239,6 @@ const Navbar = () => {
                 </Link>
               </div>
             </button>
-          </div>
-          <div className="flex flex-row justify-end gap-1 md:justify-end  md:gap-2">
-            {!userInfo ? (
-              <>
-                <Link to="/login">
-                  <button className="bg-gray-500 text-sm px-4 py-1 text-white rounded-xl">
-                    Login
-                  </button>
-                </Link>
-                <Link to="/register">
-                  <button className="bg-gray-500 text-sm px-2 py-1 text-white rounded-xl">
-                    Register
-                  </button>
-                </Link>
-              </>
-            ) : (
-              <button
-                onClick={handleLogout}
-                className="bg-gray-500 hidden sm:flex text-sm px-4 py-1 text-white rounded-xl">
-                Logout
-              </button>
-            )}
           </div>
         </div>
 
